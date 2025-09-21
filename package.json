@@ -5,7 +5,7 @@
   "version": "0.1.0",
   "private": true,
   "bin": {
-    "setup": "src/index.ts",
+    "setup-cli": "src/index.ts",
   },
   "devDependencies": {
     "@types/bun": "latest"
