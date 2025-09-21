@@ -1,0 +1,19 @@
+{
+  "name": "setup",
+  "module": "index.ts",
+  "type": "module",
+  "version": "0.1.0",
+  "private": true,
+  "bin": {
+    "setup": "src/index.ts",
+  },
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  },
+  "dependencies": {
+    "commander": "^14.0.1"
+  }
+}
