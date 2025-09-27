@@ -1,0 +1,28 @@
+# Zoxide
+Invoke-Expression (& { (zoxide init powershell | Out-String) })
+
+# Starship
+Invoke-Expression (&starship init powershell)
+
+function Invoke-Starship-PreCommand {
+  $loc = $executionContext.SessionState.Path.CurrentLocation;
+  $prompt = "$([char]27)]9;12$([char]7)"
+  if ($loc.Provider.Name -eq "FileSystem") {
+    $prompt += "$([char]27)]9;9;`"$($loc.ProviderPath)`"$([char]27)\"
+  }
+  $host.ui.Write($prompt)
+}
+
+# Yazi
+$env:YAZI_FILE_ONE = "{{file_one_path}}"
+
+function nav {
+  $tmp = [System.IO.Path]::GetTempFileName()
+  yazi $args --cwd-file="$tmp"
+  $cwd = Get-Content -Path $tmp -Encoding UTF8
+  if (-not [String]::IsNullOrEmpty($cwd) -and $cwd -ne $PWD.Path) {
+    Set-Location -LiteralPath ([System.IO.Path]::GetFullPath($cwd))
+  }
+  Remove-Item -Path $tmp
+}
+

@@ -1,11 +1,10 @@
 import { parseArgs } from 'node:util';
-import { Command } from 'commander';
+import { Command, program } from 'commander';
 import * as packageJson from '../package.json';
 import { pull } from './pull';
 
-const command = new Command();
-command
-	.name('setup')
+const command = program
+	.name('setup-cli')
 	.description('CLI utility for settings up shared configurations.')
 	.version(packageJson.version);
 
